@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define the shape of your global state.
 interface GlobalState {
-  user: null | { name: string; email: string };
+  user: null | { name: string; password: string };
   theme: 'light' | 'dark';
   role:string
 }
@@ -11,7 +11,7 @@ interface GlobalState {
 // Define the context value shape.
 interface GlobalContextValue {
   globalState: GlobalState;
-  login: (user: { name: string; email: string }) => void;
+  login: (user: { name: string; password: string }) => void;
   logout: () => void;
   toggleTheme: () => void;
   updateRole: (role: string) => void;
@@ -41,7 +41,7 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
     role:''
   });
 
-  const login = (user: { name: string; email: string }) => {
+  const login = (user: { name: string; password: string }) => {
     setGlobalState((prevState) => ({
       ...prevState,
       user,

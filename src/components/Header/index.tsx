@@ -4,11 +4,12 @@ import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
 import LogoIcon from '../../images/logo/logo-icon.svg';
 import DarkModeSwitcher from './DarkModeSwitcher';
-
+import { useGlobalContext } from '../../GlobalProvider';
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+  const {globalState:{user}}=useGlobalContext();
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
@@ -96,7 +97,7 @@ const Header = (props: {
             </div>
           </form>
         </div> */}
-        <h1 className="text-xl font-semibold text-[#09432D] dark:text-white font-satoshi">Welcome Back, Thomas</h1>
+        <h1 className="text-xl font-semibold text-[#09432D] dark:text-white font-satoshi">Welcome Back, {user?.name}</h1>
 
         <div className="flex items-center gap-3 2xsm:gap-7">
         

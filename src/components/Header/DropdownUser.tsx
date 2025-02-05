@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClickOutside from '../ClickOutside';
+import { useGlobalContext } from '../../GlobalProvider';
 import UserOne from '../../images/user/user-01.png';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const {globalState}=useGlobalContext();
 
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
@@ -15,9 +17,9 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {globalState.user?.name}
           </span>
-          <span className="block text-xs">CS Personnel</span>
+          <span className="block text-xs">{globalState?.role}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
