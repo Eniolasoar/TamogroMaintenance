@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+interface SelectGroupTwoProps {
 
-const SelectGroupTwo: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  selectedOption: string;
+
+  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+
+}
+const SelectGroupTwo: React.FC<SelectGroupTwoProps> = ({ selectedOption, setSelectedOption }) => {
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
   const changeTextColor = () => {
@@ -11,7 +16,7 @@ const SelectGroupTwo: React.FC = () => {
   return (
     <div>
       <label className="mb-3 block text-black dark:text-white">
-        Select Country
+        Select Category
       </label>
 
       <div className="relative z-20 bg-white dark:bg-form-input">

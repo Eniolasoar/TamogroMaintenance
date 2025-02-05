@@ -1,11 +1,20 @@
-// GlobalProvider.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+
+// Define the shape of a package
+interface Package {
+  customerName: string;
+  idNumber: string;
+  category: string;
+  description: string;
+  date: string;
+  status: string;}
 
 // Define the shape of your global state.
 interface GlobalState {
   user: null | { name: string; password: string };
   theme: 'light' | 'dark';
-  role:string
+  role: string;
+  packageData: Package[];
 }
 
 // Define the context value shape.
@@ -15,6 +24,8 @@ interface GlobalContextValue {
   logout: () => void;
   toggleTheme: () => void;
   updateRole: (role: string) => void;
+  updatePackageData: (data: Package[]) => void;
+  packagesByStatus: (status: 'Not Started' | 'In Progress' | 'Completed') => Package[];
 }
 
 // Create the context with an initial undefined value.
@@ -38,7 +49,33 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   const [globalState, setGlobalState] = useState<GlobalState>({
     user: null,
     theme: 'light',
-    role:''
+    role: '',
+    packageData: [
+      {
+        customerName: 'Free package',
+        idNumber: 'RSH 2883',
+        category: 'Electronics',
+        description: 'Outdated Wires',
+        date: `Jan 13,2023`,
+        status: 'Not Started',
+      },
+      {
+        customerName: 'Free package',
+        idNumber: 'Blender 2355',
+        category: 'Machinery',
+        description: 'Flat Truck Tire',
+        date: `Jan 16,2023`,
+        status: 'In Progress',
+      },
+      {
+        customerName: 'Premium Package',
+        idNumber: 'XYZ 5678',
+        category: 'Appliances',
+        description: 'Refrigerator Repair',
+        date: `Feb 2,2023`,
+        status: 'Completed',
+      },
+    ],
   });
 
   const login = (user: { name: string; password: string }) => {
@@ -69,8 +106,22 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
     }));
   };
 
+  const updatePackageData = (data: Package[]) => {
+    setGlobalState((prevState) => ({
+      ...prevState,
+      packageData: data,
+    }));
+  };
+
+  // Function to filter packages based on status
+  const packagesByStatus = (status: 'Not Started' | 'In Progress' | 'Completed'): Package[] => {
+    return globalState.packageData.filter((pkg) => pkg.status === status);
+  };
+
   return (
-    <GlobalContext.Provider value={{ globalState, login, logout, toggleTheme,updateRole }}>
+    <GlobalContext.Provider
+      value={{ globalState, login, logout, toggleTheme, updateRole, updatePackageData, packagesByStatus }}
+    >
       {children}
     </GlobalContext.Provider>
   );

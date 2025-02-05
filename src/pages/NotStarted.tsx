@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
 import TableThree from '../components/Tables/TableThree';
 import { Package } from '../types/package';
+import { useGlobalContext } from '../GlobalProvider';
 
 const NotStarted: React.FC = () => {
-   const packageData: Package[] = [
-       {
-         name: 'Free package',
-         id:'RSH 2883',
-         type:'Electronics',
-         description:'Outdated Wires',
-         invoiceDate: `Jan 13,2023`,
-         status: 'Not Started'
-       },
-       {
-         name: 'Free package',
-         id:'RSH 2883',
-         type:'Electronics',
-         description:'Outdated Wires',
-         invoiceDate: `Jan 13,2023`,
-         status: 'Not Started'
-       }
-     ];
+  const {
+
+      updatePackageData,
+      packagesByStatus,
+      globalState,
+    } = useGlobalContext();
+  
+    // Categorized packages
+    const notStartedPackages = packagesByStatus('Not Started');
+ 
   return (
 
     <>
     
-    {packageData.length>0 ? (
+    {notStartedPackages.length>0 ? (
       <>
       
       <div className='w-full flex justify-between items-center py-4'>
@@ -33,7 +26,7 @@ const NotStarted: React.FC = () => {
       
       </div>
       
-      <TableThree packageData={packageData}/>
+      <TableThree packageData={notStartedPackages} onUpdate={updatePackageData}/>
       </>
     ):
     <div className='mx-auto flex justify-center items-center min-h-[100vh]'>

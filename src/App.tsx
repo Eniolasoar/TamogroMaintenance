@@ -15,7 +15,7 @@ import Settings from './pages/Settings';
 import Tables from './pages/Tables';
 import NotStarted from './pages/NotStarted';
 import InProgress from './pages/InProgress';
-import Completed from './pages/completed';
+import Completed from './pages/Completed';
 import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';

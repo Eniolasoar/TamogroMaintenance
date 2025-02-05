@@ -1,8 +1,8 @@
 export type Package = {
-  name: string;
-  id:string;
-  type:string;
+  customerName: string;
+  idNumber:string;
+  category:string;
   description:string;
-  invoiceDate: string;
+  date: string;
   status: string;
 };
