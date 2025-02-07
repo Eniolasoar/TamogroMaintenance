@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        greenPrimary:'##09432D',
+        greenPrimary:'#09432D',
         current: 'currentColor',
         transparent: 'transparent',
         white: '#FFFFFF',

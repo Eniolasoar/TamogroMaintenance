@@ -371,7 +371,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   return (
                     <React.Fragment>
                       <NavLink
-                        to="/completed"
+                        to="/employeeTable"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-white hover:text-[#09432D] ${
                           pathname.includes('chart') && 'bg-[#09432D] '
                         }`}
@@ -405,7 +405,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   return (
                     <React.Fragment>
                       <NavLink
-                        to="/completed"
+                        to="/registerEmployee"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-white hover:text-[#09432D] ${
                           pathname.includes('chart') && 'bg-[#09432D] '
                         }`}

@@ -8,23 +8,36 @@ interface Package {
   description: string;
   date: string;
   status: string;}
+interface Employee {
+  fullname: string;
+  staffId: string;
+  username: string;
+  phoneNumber: string;
+  email: string;
+  role: string;}
 
 // Define the shape of your global state.
 interface GlobalState {
-  user: null | { name: string; password: string };
+  user: null | { name: string; password: string,fullname:string };
   theme: 'light' | 'dark';
   role: string;
   packageData: Package[];
+}
+interface GlobalEmployeeState {
+
+  packageData: Employee[];
 }
 
 // Define the context value shape.
 interface GlobalContextValue {
   globalState: GlobalState;
-  login: (user: { name: string; password: string }) => void;
+  globalEmployeeState: GlobalEmployeeState
+  login: (user: { name: string; password: string,fullname:string  }) => void;
   logout: () => void;
   toggleTheme: () => void;
   updateRole: (role: string) => void;
   updatePackageData: (data: Package[]) => void;
+  updateEmployeeData:(data:Employee[])=>void;
   packagesByStatus: (status: 'Not Started' | 'In Progress' | 'Completed') => Package[];
 }
 
@@ -77,8 +90,45 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
       },
     ],
   });
+  const [globalEmployeeState, setGlobalEmployeeState] = useState<GlobalEmployeeState>({
+    packageData: [
+      {
+        fullname: 'Anishe Eniola',
+        staffId: '2345',
+        username: 'EniMonei',
+        phoneNumber: '07060866513',
+        email: 'eniolanishe@gmail.com',
+        role: 'Technician'
+      },
+      {
+        fullname: 'Jeremiah Abu',
+        staffId: '1224',
+        username: 'Jerry',
+        phoneNumber: '07089866513',
+        email: 'jeremiah@gmail.com',
+        role: 'CS Personnel'
+      },
+      {
+        fullname: 'Kelvin Yashim',
+        staffId: '221',
+        username: 'kyzamani',
+        phoneNumber: '07011266513',
+        email: 'kyzamani@gmail.com',
+        role: 'Technician'
+      },
+      {
+        fullname: 'James Brent',
+        staffId: '9930',
+        username: 'Jamey',
+        phoneNumber: '07060006513',
+        email: 'james@gmail.com',
+        role: 'CS Personnel'
+      },
+      
+    ],
+  });
 
-  const login = (user: { name: string; password: string }) => {
+  const login = (user: { name: string; password: string,fullname:string  }) => {
     setGlobalState((prevState) => ({
       ...prevState,
       user,
@@ -112,6 +162,12 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
       packageData: data,
     }));
   };
+  const updateEmployeeData = (data: Employee[]) => {
+    setGlobalEmployeeState((prevState) => ({
+      ...prevState,
+      packageData: data,
+    }));
+  };
 
   // Function to filter packages based on status
   const packagesByStatus = (status: 'Not Started' | 'In Progress' | 'Completed'): Package[] => {
@@ -120,7 +176,7 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
 
   return (
     <GlobalContext.Provider
-      value={{ globalState, login, logout, toggleTheme, updateRole, updatePackageData, packagesByStatus }}
+      value={{ globalState, globalEmployeeState,login, logout, toggleTheme, updateRole, updatePackageData,updateEmployeeData, packagesByStatus }}
     >
       {children}
     </GlobalContext.Provider>

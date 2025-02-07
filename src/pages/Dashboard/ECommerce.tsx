@@ -41,7 +41,7 @@ const ECommerce: React.FC = () => {
           <div className="fixed inset-0 flex items-center justify-center z-50 mt-[50px] ml-[20%]">
             <div className="bg-red-900 p-6 rounded-md shadow-lg relative w-md">
               <Form
-                item={{ customerName: '', idNumber: '', description: '', category: '', date: '', status: 'Not Started' }}
+                item={{ customerName: '', idNumber: '', description: '', category: '', date: '', status: '' }}
                 onSave={handleSave}
                 onClose={closeModal}
                 buttonName="Save Log"
@@ -54,7 +54,7 @@ const ECommerce: React.FC = () => {
       {/* Main Content */}
       {role === 'Technician' ? (
         <>
-          <h2 className="font-bold text-[#09432D] text-2xl pb-3">Assigned Tasks</h2>
+          <h2 className="font-bold text-[#09432D] text-xl pb-3">Assigned Tasks</h2>
           <TableThree packageData={notStartedPackages} onUpdate={updatePackageData} />
         </>
       ) : !show ? (

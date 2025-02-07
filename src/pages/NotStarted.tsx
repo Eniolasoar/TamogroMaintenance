@@ -22,7 +22,7 @@ const NotStarted: React.FC = () => {
       <>
       
       <div className='w-full flex justify-between items-center py-4'>
-      <h2 className='font-bold text-[#09432D] text-2xl '>Not Started Logs</h2>
+      <h2 className='font-bold text-[#09432D] text-xl '>Not Started Logs</h2>
       
       </div>
       

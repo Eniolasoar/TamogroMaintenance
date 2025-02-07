@@ -20,7 +20,9 @@ import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import Home from './pages/Home';
-
+import Admin from './pages/Dashboard/Admin';
+import EmployeeTable from './pages/EmployeeTable';
+import RegisterEmployee from './pages/Form/RegisterEmployee';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -73,11 +75,38 @@ function App() {
         }
       />
       <Route
+        path='/admin'
+        element={
+          <>
+            <PageTitle title="Dashboard | Tamogro Maintenance Department" />
+            <Admin/>
+          </>
+        }
+      />
+      <Route
         path="/notStarted"
         element={
           <>
             <PageTitle title="Tamogro Maintenance Department" />
             <NotStarted/>
+          </>
+        }
+      />
+      <Route
+        path="/employeeTable"
+        element={
+          <>
+            <PageTitle title="Tamogro Maintenance Department" />
+            <EmployeeTable/>
+          </>
+        }
+      />
+      <Route
+        path="/registerEmployee"
+        element={
+          <>
+            <PageTitle title="Tamogro Maintenance Department" />
+           <RegisterEmployee/>
           </>
         }
       />

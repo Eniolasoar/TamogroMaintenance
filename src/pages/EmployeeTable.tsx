@@ -2,30 +2,29 @@ import React, { useState } from 'react';
 import TableThree from '../components/Tables/TableThree';
 import { Package } from '../types/package';
 import { useGlobalContext } from '../GlobalProvider';
+import EmployeeTableTemplate from '../components/Tables/EmployeeTableTemplate';
 
-const Completed: React.FC = () => {
-  const {
- 
-       updatePackageData,
-       packagesByStatus,
-       globalState,
-     } = useGlobalContext();
-   
-     // Categorized packages
-     const completedData = packagesByStatus('Completed');
+const EmployeeTable: React.FC = () => {
+   const {
+        globalEmployeeState,
+        updateEmployeeData
+      } = useGlobalContext();
+
+      const data=globalEmployeeState.packageData;
+
   return (
 
     <>
     
-    {completedData.length>0 ? (
+    {globalEmployeeState.packageData.length>0 ? (
       <>
       
       <div className='w-full flex justify-between items-center py-4'>
-      <h2 className='font-bold text-[#09432D] text-xl '>Completed Logs</h2>
+      <h2 className='font-bold text-[#09432D] text-xl '>Employee Table</h2>
       
       </div>
       
-      <TableThree packageData={completedData} onUpdate={updatePackageData}/>
+      <EmployeeTableTemplate employeeData={data} onUpdate={updateEmployeeData}/>
       </>
     ):
     <div className='mx-auto flex justify-center items-center min-h-[100vh]'>
@@ -37,4 +36,4 @@ const Completed: React.FC = () => {
   );
 };
 
-export default Completed;
+export default EmployeeTable;

@@ -21,7 +21,7 @@ const InProgress: React.FC = () => {
       <>
       
       <div className='w-full flex justify-between items-center py-4'>
-      <h2 className='font-bold text-[#09432D] text-2xl '>In Progress Logs</h2>
+      <h2 className='font-bold text-[#09432D] text-xl '>In Progress Logs</h2>
       
       </div>
       

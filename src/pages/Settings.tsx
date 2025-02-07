@@ -5,9 +5,9 @@ const Settings = () => {
   return (
     <>
       <div className="mx-auto max-w-270">
-        <Breadcrumb pageName="Settings" />
+        <Breadcrumb pageName="Account Information" />
 
-        <div className="grid grid-cols-5 gap-8">
+       
           <div className="col-span-5 xl:col-span-3">
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
@@ -58,6 +58,7 @@ const Settings = () => {
                           id="fullName"
                           placeholder="Devid Jhon"
                           defaultValue="Devid Jhon"
+                          disabled
                         />
                       </div>
                     </div>
@@ -76,6 +77,7 @@ const Settings = () => {
                         id="phoneNumber"
                         placeholder="+990 3343 7865"
                         defaultValue="+990 3343 7865"
+                        disabled
                       />
                     </div>
                   </div>
@@ -120,6 +122,7 @@ const Settings = () => {
                         id="emailAddress"
                         placeholder="devidjond45@gmail.com"
                         defaultValue="devidjond45@gmail.com"
+                        disabled
                       />
                     </div>
                   </div>
@@ -138,6 +141,7 @@ const Settings = () => {
                       id="Username"
                       placeholder="devidjhon24"
                       defaultValue="devidjhon24"
+                      disabled
                     />
                   </div>
 
@@ -146,7 +150,7 @@ const Settings = () => {
                       className="mb-3 block text-sm font-medium text-black dark:text-white"
                       htmlFor="Username"
                     >
-                      BIO
+                      Role
                     </label>
                     <div className="relative">
                       <span className="absolute left-4.5 top-4">
@@ -184,14 +188,15 @@ const Settings = () => {
                         className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                         name="bio"
                         id="bio"
-                        rows={6}
+                        rows={1}
                         placeholder="Write your bio here"
-                        defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet."
+                        defaultValue="Technician"
+                        disabled
                       ></textarea>
                     </div>
                   </div>
 
-                  <div className="flex justify-end gap-4.5">
+                  {/* <div className="flex justify-end gap-4.5">
                     <button
                       className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
                       type="submit"
@@ -204,12 +209,12 @@ const Settings = () => {
                     >
                       Save
                     </button>
-                  </div>
+                  </div> */}
                 </form>
               </div>
             </div>
           </div>
-          <div className="col-span-5 xl:col-span-2">
+          {/* <div className="col-span-5 xl:col-span-2">
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
                 <h3 className="font-medium text-black dark:text-white">
@@ -301,8 +306,8 @@ const Settings = () => {
                 </form>
               </div>
             </div>
-          </div>
-        </div>
+          </div> */}
+       
       </div>
     </>
   );
