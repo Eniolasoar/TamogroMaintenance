@@ -12,4 +12,8 @@ router.post('/create-maintenance', authMiddleWare('Cpersonnel'), maintenanceCont
 router.put('/update-maintenance/:id', authMiddleWare('Cpersonnel'), maintenanceController.updateMaintenanceRequest);
 router.delete('/delete-maintenance/:id', authMiddleWare('Cpersonnel'), maintenanceController.deleteMaintenanceRequest);
 
+
+router.get('/pending-work', authMiddleWare('Cpersonnel'), maintenanceController.pendingWork);
+router.get('/ongoing-work', authMiddleWare('Cpersonnel'), maintenanceController.ongoingWork);
+router.get('/completed-work', authMiddleWare('Cpersonnel'), maintenanceController.completedWork);
 export default router;

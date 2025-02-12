@@ -67,6 +67,12 @@ export async function updateMaintenanceStatus(req,res) {
   
 }
 
+export async function ongoingWork(req,res) {
+  const maintenanceRequests = await Maintenance.find({status: "Ongoing"}).sort('-date');
+  res.json({ message: 'Ongoing Maintenance Requests:', maintenanceRequests });
+  
+}
+
 export async function completedWork(req,res) {
   const maintenanceRequests = await Maintenance.find({status: "Completed"}).sort('-date');
   res.status(200).json({ message: 'Completed Maintenance Requests:', maintenanceRequests });
